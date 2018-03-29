@@ -29,7 +29,7 @@ public class settings {
 			checkstatus();
 			break;
 		default:	
-			System.out.println("The number doesn't exist");
+			System.out.println("The number doesn't exist!");
 		}	
 	}
 	
@@ -37,15 +37,15 @@ public class settings {
 		countentry1++;
 		int count=0;
 		if(myitemlist.isEmpty()) {
-			System.out.println("No item in the list");
+			System.out.println("No item in my item list!");
 		}
-		System.out.println("Would you want to buy some items? (1 Yes 2 No):"); 
+		System.out.println("Would you want to buy some items? (1 Yes 2 No): "); 
 	    Scanner sc = new Scanner(System.in); 
         int buyitem = sc.nextInt(); 
         while (buyitem==1) {
         	System.out.println("The money you have: "+money); 
         	if(countentry1==1 && count==0) { 
-        		System.out.println("index | item name | price | number you have");
+        		System.out.println("index | item name | price | number you have ");
         		itemlist.add(new items(1,"Stone Stick",100));
         		itemlist.add(new items(2,"Dagger",150));
         		itemlist.add(new items(3,"Iron Sword",200));
@@ -53,7 +53,7 @@ public class settings {
         		itemlist.add(new items(5,"Gun",1000));
         	}
         	itemlistInfo();
-        	System.out.println("Type the item(index) you'd like to buy? (1-5):"); 
+        	System.out.println("Type the item(index) you'd like to buy? (1-5): "); 
     	    Scanner sc1 = new Scanner(System.in); 
             int itemindex = sc1.nextInt(); 
             for(int i=0;i<itemlist.size();i++) {
@@ -77,7 +77,7 @@ public class settings {
                 				myitemlist.add(itemlist.get(i));
             				}
             			}
-                        System.out.println("Item table has been updated"); 
+                        System.out.println("Item table has been updated: "); 
                         itemlistInfo();
             		}else {
             			System.out.println("You don't have enough money!");
@@ -85,7 +85,7 @@ public class settings {
             	}
             }
             count++;
-            System.out.println("Continue shopping? (1 Yes 2 No):"); 
+            System.out.println("Continue shopping? (1 Yes 2 No): "); 
     	    Scanner sc2 = new Scanner(System.in); 
             int shopping = sc2.nextInt(); 
             if(shopping==1) {
@@ -94,7 +94,7 @@ public class settings {
             	buyitem=2; //don't buy=quit
             }
         }
-        System.out.println("Print my items: ");
+        System.out.println("Print my item list: ");
         myitemlistInfo();
         System.out.println("Back to settings page.");
         System.out.println("");
@@ -103,11 +103,11 @@ public class settings {
 	public void editmembers() {
     	countentry2++;//times of entry the function
     	int count=0;
-    	if(countentry2==1) { //setup
-        	squadmember.add(new members(1,"Captain1",10,15,13,20,90,120,0,"Captain",true));
+    	if(squadmember.isEmpty()) { //setup
+    		squadmember.add(new members(1,"Captain1",10,15,13,20,90,120,0,"Captain",true));
         	squadmember.add(new members(6,"Hierophant1",8,13,12,14,85,110,0,"Hierophant",true));
     	}
-		System.out.print("Would you want to edit squad members? (1 Add 2 Remove 3 Quit):"); 
+		System.out.print("Would you want to edit squad members? (1 Add 2 Remove 3 Quit): "); 
 	    Scanner sc = new Scanner(System.in); 
         int editmember = sc.nextInt(); 
 		while(editmember==1) {	
@@ -127,7 +127,7 @@ public class settings {
         	}
 
 			memberInfo();
-        	System.out.println("Type the index you'd like to buy? (11-19):"); 
+        	System.out.println("Type the index you'd like to buy? (11-19): "); 
     	    Scanner sc1 = new Scanner(System.in); 
             int memberindex = sc1.nextInt();
             for(int i=0;i<member.size();i++) {
@@ -144,7 +144,7 @@ public class settings {
                     			System.out.println("The money you have after buying: "+money); 
                     			member.get(i).insquad=true;
                     			squadmember.add(member.get(i));//get this member
-                    			System.out.println("Member table has been updated"); 
+                    			System.out.println("Member table has been updated: "); 
                                 memberInfo();
                     		}else {
                     			System.out.println("You don't have enough money!");
@@ -163,9 +163,9 @@ public class settings {
             	editmember=3; //don't buy=quit
             }
 		}
-		while(editmember==2) {
+		while(editmember==2) { //Remove
 			squadmemberInfo();
-			System.out.println("Select which member(index) to remove");
+			System.out.println("Select which member(index) to remove: ");
 			Scanner sc2 = new Scanner(System.in); 
 	        int removemember = sc2.nextInt();
 	        for(int i=0;i<squadmember.size();i++) {
@@ -174,12 +174,13 @@ public class settings {
 	        			for(int j=0;j<member.size();j++) {
 	        				if(squadmember.get(i).index==member.get(j).index) {
 	        					member.get(j).insquad=false;
+	        					System.out.println("Member table has been updated: "); 
 	        					memberInfo();
 	        				}
 	        			}
 	        			squadmember.remove(i);
 	        		}else {
-	        			System.out.println("You can't remove Captain or Hierophant");
+	        			System.out.println("You can't remove Captain or Hierophant!");
 	        		}
 				}
 	        }
@@ -202,8 +203,11 @@ public class settings {
 	}
 	
 	public void checkstatus() {
-		if(squadmember.isEmpty()) {
-			System.out.println("No squad member.");
+		if(squadmember.isEmpty()) { //setup
+			squadmember.add(new members(1,"Captain1",10,15,13,20,90,120,0,"Captain",true));
+        	squadmember.add(new members(6,"Hierophant1",8,13,12,14,85,110,0,"Hierophant",true));
+        	System.out.println("Print squad numbers: ");
+			squadmemberInfo();
 		}else {
 			System.out.println("Print squad numbers: ");
 			squadmemberInfo();
