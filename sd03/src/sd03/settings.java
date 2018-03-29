@@ -38,6 +38,8 @@ public class settings {
 		int count=0;
 		if(myitemlist.isEmpty()) {
 			System.out.println("No item in my item list!");
+		}else {
+			myitemlistInfo();
 		}
 		System.out.println("Would you want to buy some items? (1 Yes 2 No): "); 
 	    Scanner sc = new Scanner(System.in); 
@@ -45,7 +47,6 @@ public class settings {
         while (buyitem==1) {
         	System.out.println("The money you have: "+money); 
         	if(countentry1==1 && count==0) { 
-        		System.out.println("index | item name | price | number you have ");
         		itemlist.add(new items(1,"Stone Stick",100));
         		itemlist.add(new items(2,"Dagger",150));
         		itemlist.add(new items(3,"Iron Sword",200));
@@ -114,7 +115,6 @@ public class settings {
 			countenter1++;
 			System.out.println("The money you have: "+money);
 			if(countenter1==1 && count==0) { 
-				System.out.println("index | name | move | fight | shoot | armour | morale | health | cost | notes | insquad");
         		member.add(new members(11,"Abel",10,9,9,12,70,100,80,"Accuracy",false));
         		member.add(new members(12,"Ben",12,14,8,11,60,90,70,"Fast",false));
         		member.add(new members(13,"Calvin",15,14,10,17,85,150,130,"Fast&Strong",false));
@@ -125,7 +125,6 @@ public class settings {
         		member.add(new members(18,"Young",14,7,8,12,70,110,80,"Fast",false));
         		member.add(new members(19,"Zidane",14,13,9,16,90,140,110,"Fast&Strong",false));
         	}
-
 			memberInfo();
         	System.out.println("Type the index you'd like to buy? (11-19): "); 
     	    Scanner sc1 = new Scanner(System.in); 
@@ -203,6 +202,7 @@ public class settings {
 	}
 	
 	public void checkstatus() {
+		System.out.println("Money you have: "+money);
 		if(squadmember.isEmpty()) { //setup
 			squadmember.add(new members(1,"Captain1",10,15,13,20,90,120,0,"Captain",true));
         	squadmember.add(new members(6,"Hierophant1",8,13,12,14,85,110,0,"Hierophant",true));
@@ -217,6 +217,7 @@ public class settings {
 	
 	public final void itemlistInfo() {
 		ListIterator<items> it = itemlist.listIterator();
+		System.out.println("index | item name | price | number you have ");
 		while (it.hasNext()) {
 			System.out.println(it.next());
 		}
@@ -224,6 +225,7 @@ public class settings {
 	
 	public final void myitemlistInfo() {
 		ListIterator<items> it = myitemlist.listIterator();
+		System.out.println("index | item name | price | number you have ");
 		while (it.hasNext()) {
 			System.out.println(it.next());
 		}
@@ -231,6 +233,7 @@ public class settings {
 	
 	public final void squadmemberInfo() {
 		ListIterator<members> it = squadmember.listIterator();
+		System.out.println("index | name | move | fight | shoot | armour | morale | health | cost | notes | insquad");
 		while (it.hasNext()) {
 			System.out.println(it.next());
 		}
@@ -238,6 +241,7 @@ public class settings {
 	
 	public final void memberInfo() {
 		ListIterator<members> it = member.listIterator();
+		System.out.println("index | name | move | fight | shoot | armour | morale | health | cost | notes | insquad");
 		while (it.hasNext()) {
 			System.out.println(it.next());
 		}
